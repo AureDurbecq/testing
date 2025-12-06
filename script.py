@@ -181,18 +181,3 @@ def main():
             IJ.log("Results Table → ROI Manager watcher started.")
         if not roi_to_results_active:
             timer.schedule(ROIWatcher(), 0, 200)
-            roi_to_results_active = True
-            IJ.log("ROI Manager → Results Table watcher started.")
-        else:
-            IJ.log("Watchers already running.")
-        StopWatcherDialog()
-    elif mode == "Stop":
-        try:
-            timer.cancel()
-            IJ.log("Watchers manually stopped.")
-        except:
-            IJ.log("Failed to stop timer.")
-        globals()["roi_watcher_active"] = False
-        globals()["roi_to_results_active"] = False
-
-main()
